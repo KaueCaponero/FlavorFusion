@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+    <link rel="stylesheet" href="global.css">
+    <title>Flavor Fusion - Receitas</title>
+</head>
+<body>
+
+    <h1>Flavor Fusion</h1>
+
+    <h2>Receitas</h2>
+    
+    <!--<section class="grid">-->
+        <div class="ui stackable five cards grid">
+            <div class="ui five wide column" th:each="receita : ${receitas}">
+                <div class="ui card">
+                    <div class="image">
+                        <img src="/images/avatar2/large/kristy.png">
+                    </div>
+                    <div class="content">
+                        <a class="header" th:text="${receita}"></a>
+                        <div class="meta">
+                            <span class="date">Joined in 2013</span>
+                        </div>
+                        <div class="description">
+                            Kristy is an art director living in New York.
+                        </div>
+                        </div>
+                        <div class="extra content">
+                            <div class="ui buttons">
+                                <button class="ui blue button">
+                                    <i class="eye icon"></i>
+                                </button>
+                                <div class="or" data-text="ou"></div>
+                                <button class="ui button">
+                                    <i class="edit icon"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--</section>-->
+    
+</body>
+</html>
