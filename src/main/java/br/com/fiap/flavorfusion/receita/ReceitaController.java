@@ -15,10 +15,9 @@ public class ReceitaController {
     @GetMapping
     public String index(Model model) {
         model.addAttribute("receitas", List.of(
-            "Receita 1",
-            "Receita 2",
-            "Receita 3",
-            "Teste Unitário"
+            new Receita(null, "Bolo de Fubá", "março de 2018", "Receita de bolo sem recheio"),
+            new Receita(null, "Torta de Palmito", "abril de 2019", "Receita de bolo sem recheio"),
+            new Receita(null, "Brigadeiro", "agosto de 2021", "Receita de bolo sem recheio")
         ));
         return "receita/index";
     }
