@@ -6,27 +6,38 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
     <link rel="stylesheet" href="global.css">
-    <title>Flavor Fusion - Receitas</title>
+    <title>Hub Hotels - Hotels</title>
 </head>
 <body>
 
-    <h1>Flavor Fusion</h1>
+    <h1>Hub Hotels</h1>
 
-    <h2>Receitas</h2>
+    <h2>Hotels</h2>
+
+    <a href="/hotels/new" class="ui green button" style="padding: 10px;">
+        <i class="plus icon"></i> Cadastrar Hotel
+    </a>
+
+    <div class="ui red message" th:if="${errorMessage != null}">
+        <div class="header" th:text="${errorMessage}"></div>
+    </div>
+
+    <div class="ui green message" th:if="${sucessMessage != null}">
+        <div class="header" th:text="${sucessMessage}"></div>
+    </div>
     
     <!--<section class="grid">-->
         <div class="ui stackable five cards grid">
-            <div class="ui five wide column" th:each="receita : ${receitas}">
+            <div class="ui five wide column" th:each="hotel : ${hotels}">
                 <div class="ui card">
                     <div class="image" style="width: 100%;">
-                        <img th:src="${receita.urlImagem}" alt="Imagem da Receita" style="width: 100%; height: 200px;"/>
+                        <img th:src="${hotel.urlImagem}" alt="Imagem do Hotel" style="width: 100%; height: 200px;"/>
                     </div>
                     <div class="content">
-                        <a class="header" th:text="${receita.nome}"></a>
+                        <a class="header" th:text="${hotel.nome}"></a>
                         <div class="meta">
-                            <span class="date" th:text="${receita.data}"></span></span>
+                            <span class="description" th:text="${hotel.endereco}"></span></span>
                         </div>
-                        <div class="description" th:text="${receita.descricao}"></div>
                         </div>
                         <div class="extra content">
                             <div class="ui buttons">
@@ -38,9 +49,9 @@
                                     <i class="edit icon"></i>
                                 </button>
                                 <div class="or" data-text="ou"></div>
-                                <button class="ui red button">
+                                <a th:href="${'/hotels/delete/' + hotel.id}" class="ui red button">
                                     <i class="delete icon"></i>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>

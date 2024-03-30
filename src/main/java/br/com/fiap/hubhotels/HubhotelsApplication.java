@@ -1,4 +1,4 @@
-package br.com.fiap.flavorfusion;
+package br.com.fiap.hubhotels;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @SpringBootApplication
 @Controller
-public class FlavorfusionApplication {
+public class HubhotelsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FlavorfusionApplication.class, args);
+		SpringApplication.run(HubhotelsApplication.class, args);
 	}
 
 	@GetMapping

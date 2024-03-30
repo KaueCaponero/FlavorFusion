@@ -1,41 +1,8 @@
--- Inserir dados nas tabelas Receita e Ingrediente
-INSERT INTO receita (id_receita, nm_receita, img_receita, dt_receita, ds_receita) VALUES(1, 'Bolo de Cenoura', 'https://www.receiteria.com.br/wp-content/uploads/bolo-de-cenoura-de-liquidificador-1-730x548.jpeg', '2024-03-23', 'Descricao do Bolo de Cenoura');
-INSERT INTO receita (id_receita, nm_receita, img_receita, dt_receita, ds_receita) VALUES(2, 'Bolo de Chocolate', 'https://bakeandcakegourmet.com.br/uploads/site/receitas/bolo-de-chocolate-facil-e-barato-rspxk8nc.jpg', '2024-03-23', 'Descricao do Bolo de Chocolate');
-INSERT INTO receita (id_receita, nm_receita, img_receita, dt_receita, ds_receita) VALUES(3, 'Bolo de Laranja', 'https://uploads.metropoles.com/wp-content/uploads/2020/04/09103255/91896822_168757634249882_6340592912128928891_n-600x400.jpg', '2024-03-23', 'Descricao do Bolo de Laranja');
+-- Inserir dados nas tabelas Hotel e Quarto
+INSERT INTO hotel (nm_hotel, end_hotel, img_hotel) VALUES ('Hotel Hilton Barra', 'Av. Embaixador Abelardo Bueno, 1430 - Rio de Janeiro / RJ' ,'https://media-cdn.tripadvisor.com/media/photo-s/2a/d5/e6/e9/exterior.jpg');
+INSERT INTO hotel (nm_hotel, end_hotel, img_hotel) VALUES ('Casa Grande Hotel Resort & Spa', 'Av. Miguel Estefno, 1001 - Guaruja / SP' ,'https://cf.bstatic.com/xdata/images/hotel/max1024x768/27085997.jpg?k=f1c21d28e62f331f06bce4b0e25901d3afba8f65928cfb42703ca412b3e6fc20&o=&hp=1');
+INSERT INTO hotel (nm_hotel, end_hotel, img_hotel) VALUES ('Club Med Lake Paradise', 'Rod. Eng. Candido do Rego Chaves, 4500 - Mogi das Cruzes / SP' ,'https://ns.clubmed.com/dream/PRODUCT_CENTER/DESTINATIONS/SUN/Amerique_du_sud___centrale/Bresil/Lake_Paradise/433356-f2jryrwv89-swhr.jpg');
 
-INSERT INTO ingrediente (id_ingrediente, nm_ingrediente, und_med_ingrediente) VALUES(1, 'Leite', 'Litro');
-INSERT INTO ingrediente (id_ingrediente, nm_ingrediente, und_med_ingrediente) VALUES(2, 'Ovo', 'Unidade');
-INSERT INTO ingrediente (id_ingrediente, nm_ingrediente, und_med_ingrediente) VALUES(3, 'Farinha', 'Xicara');
-INSERT INTO ingrediente (id_ingrediente, nm_ingrediente, und_med_ingrediente) VALUES(4, 'Agua', 'Litro');
-INSERT INTO ingrediente (id_ingrediente, nm_ingrediente, und_med_ingrediente) VALUES(5, 'Chocolate', 'Gramas');
-
--- Inserir dados na tabela ReceitaIngrediente
-INSERT INTO receita_ingrediente (id_receita, id_ingrediente, qtd_rec_ing) VALUES (
-    (SELECT id_receita FROM receita WHERE nm_receita = 'Bolo de Chocolate'),
-    (SELECT id_ingrediente FROM ingrediente WHERE nm_ingrediente = 'Leite'),
-    1.0
-);
-
-INSERT INTO receita_ingrediente (id_receita, id_ingrediente, qtd_rec_ing) VALUES (
-    (SELECT id_receita FROM receita WHERE nm_receita = 'Bolo de Chocolate'),
-    (SELECT id_ingrediente FROM ingrediente WHERE nm_ingrediente = 'Ovo'),
-    4.0
-);
-
-INSERT INTO receita_ingrediente (id_receita, id_ingrediente, qtd_rec_ing) VALUES (
-    (SELECT id_receita FROM receita WHERE nm_receita = 'Bolo de Chocolate'),
-    (SELECT id_ingrediente FROM ingrediente WHERE nm_ingrediente = 'Farinha'),
-    2.0
-);
-
-INSERT INTO receita_ingrediente (id_receita, id_ingrediente, qtd_rec_ing) VALUES (
-    (SELECT id_receita FROM receita WHERE nm_receita = 'Bolo de Chocolate'),
-    (SELECT id_ingrediente FROM ingrediente WHERE nm_ingrediente = 'Agua'),
-    0.5
-);
-
-INSERT INTO receita_ingrediente (id_receita, id_ingrediente, qtd_rec_ing) VALUES (
-    (SELECT id_receita FROM receita WHERE nm_receita = 'Bolo de Chocolate'),
-    (SELECT id_ingrediente FROM ingrediente WHERE nm_ingrediente = 'Chocolate'),
-    500
-);
+INSERT INTO quarto (tp_quarto, ds_quarto, qtd_quarto, id_hotel, valor_diaria_quarto, img_quarto) VALUES ('Standard', 'Quarto padrao', 20, 1, 150.00, 'https://coralplaza.com.br/wp-content/uploads/2018/07/194920-tipos-de-quarto-de-hotel-como-escolher-o-melhor-na-sua-hospedagem-1.jpg');
+INSERT INTO quarto (tp_quarto, ds_quarto, qtd_quarto, id_hotel, valor_diaria_quarto, img_quarto) VALUES ('Deluxe', 'Quarto luxuoso', 15, 1, 300.00, 'https://media-cdn.tripadvisor.com/media/photo-s/0b/ac/bc/a3/quarto-deluxe.jpg');
+INSERT INTO quarto (tp_quarto, ds_quarto, qtd_quarto, id_hotel, valor_diaria_quarto, img_quarto) VALUES ('Suite Premium', 'Suite para família', 3, 2, 1000.00, 'https://2.bp.blogspot.com/-M1tyrCU7OvE/Wbfdb0YixTI/AAAAAAAAYX0/X1Wdj1i0oXclB1nKNzhizbcl5fYpAIb4wCLcBGAs/s1600/Belmond%2BCopacabana%2BPalace%2B-%2BSuite%2Bcom%2Bvista%2Bpraia%2B%25281%2529.jpg');
