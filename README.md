@@ -1,2 +1,2 @@
-# FlavorFusion
-Projeto de receitas culinárias para a matéria de Digital Business Enablement da FIAP
+# HubHotels
+Projeto de gerenciamento de hotels e quartos para a matéria de Digital Business Enablement da FIAP
