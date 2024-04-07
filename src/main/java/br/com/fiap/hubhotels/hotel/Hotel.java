@@ -15,11 +15,13 @@ public class Hotel {
     private Long id;
 
     @Column(name = "NM_HOTEL", nullable = false)
-    @NotBlank(message = "O campo nome não pode estar vazio.")
+    @Size(min = 1, max = 255, message = "{hotel.nome.size}")
+    @NotBlank(message = "{hotel.nome.notblank}")
     private String nome;
 
     @Column(name = "END_HOTEL", nullable = false)
-    @NotBlank(message = "O campo endereço não pode estar vazio.")
+    @Size(min = 10, max = 255, message = "{hotel.endereco.size}")
+    @NotBlank(message = "{hotel.endereco.notblank}")
     private String endereco;
 
     @Column(name = "IMG_HOTEL")

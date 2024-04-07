@@ -1,12 +1,12 @@
 package br.com.fiap.hubhotels.quarto;
 
+import br.com.fiap.hubhotels.hotel.Hotel;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-
-import br.com.fiap.hubhotels.hotel.Hotel;
 
 @Entity
 @Data
@@ -19,15 +19,17 @@ public class Quarto {
     private Long id;
 
     @Column(name = "TP_QUARTO", nullable = false)
-    @NotBlank(message = "O campo tipo não pode estar vazio.")
+    @NotBlank(message = "{quarto.tipo.notblank}")
     private String tipo;
 
     @Column(name = "DS_QUARTO", nullable = false)
-    @NotBlank(message = "O campo descricao não pode estar vazio.")
+    @Size(min = 10, max = 255, message = "{quarto.descricao.size}")
+    @NotBlank(message = "{quarto.descricao.notblank}")
     private String descricao;
 
     @Column(name = "QTD_QUARTO", nullable = false)
-    @NotBlank(message = "O campo quantidade não pode estar vazio.")
+    @Positive(message = "{quarto.quantidade.positive}")
+    @NotBlank(message = "{quarto.quantidade.notblank}")
     private Long quantidade;
 
     @ManyToOne
@@ -35,7 +37,8 @@ public class Quarto {
     private Hotel hotel;
 
     @Column(name = "VALOR_DIARIA_QUARTO", nullable = false)
-    @NotBlank(message = "O campo valorDiaria não pode estar vazio.")
+    @Positive(message = "{quarto.valorDiaria.positive}")
+    @NotBlank(message = "{quarto.valorDiaria.notblank}")
     private BigDecimal valorDiaria;
 
     @Column(name = "IMG_QUARTO")

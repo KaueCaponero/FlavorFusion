@@ -6,27 +6,30 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
     <link rel="stylesheet" href="../global.css">
-    <title>Hub Hotels - Novo Hotel</title>
+    <title>Hub Hotels</title>
 </head>
 <body>
 
     <h1>Hub Hotels</h1>
 
-    <h2>Cadastrar Hotel</h2>
+    <h2 th:text="#{hotel.create}"></h2>
 
-    <form action="/hotels" class="container" method="POST">
-        <div class="ui form">
-            <div class="required field six wide field">
-                <label>Nome</label>
-                <input name="nome" type="text" placeholder="Nome">
+    <form action="/hotels" class="container" method="POST" th:object="${hotel}">
+        <div class="ui form error">
+            <div class="required field six wide field" th:classappend="${#fields.hasErrors('nome')} ? error">
+                <label th:text="#{hotel.nome}"></label>
+                <input th:field="*{nome}" placeholder="Nome">
+                <span class="ui error message" th:errors="*{nome}"></span>
             </div>
-            <div class="required field six wide field">
-                <label>Endereço</label>
-                <input name="endereco" type="text" placeholder="Endereço">
+            <div class="required field six wide field" th:classappend="${#fields.hasErrors('endereco')} ? error">
+                <label th:text="#{hotel.endereco}"></label>
+                <input th:field="*{endereco}" placeholder="Endereço">
+                <span class="ui error message" th:errors="*{endereco}"></span>
             </div>
-            <div class="required field six wide field">
-                <label>URL da Imagem</label>
-                <input name="urlImagem" type="text" placeholder="URL da Imagem">
+            <div class="six wide field" th:classappend="${#fields.hasErrors('urlImagem')} ? error">
+                <label th:text="#{hotel.urlImagem}"></label>
+                <input th:field="*{urlImagem}" placeholder="URL da Imagem">
+                <span class="ui error message" th:errors="*{urlImagem}"></span>
             </div>
             <a href="/hotels" class="ui yellow button">
                 <i class="undo icon"></i>
