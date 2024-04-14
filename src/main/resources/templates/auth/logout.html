@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+    <link rel="stylesheet" href="global.css">
+    <title>Hub Hotels</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ui text container">
+        <h1 class="ui center aligned header">HubHotels</h1>
+        <h2 class="ui center aligned header" th:text="#{logout.confirmation}"></h2>
+        <div class="button-container">
+            <form th:action="${'/logout'}" method="POST">
+                <button class="ui secondary button" th:text="#{yes}"></button>
+            </form>
+            <a href="/hotels" class="ui button" th:text="#{no}"></a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -14,7 +14,7 @@
 
     <h2 th:text="#{hotel.create}"></h2>
 
-    <form action="/hotels" class="container" method="POST" th:object="${hotel}">
+    <form th:action="${'/hotels'}" class="container" method="POST" th:object="${hotel}">
         <div class="ui form error">
             <div class="required field six wide field" th:classappend="${#fields.hasErrors('nome')} ? error">
                 <label th:text="#{hotel.nome}"></label>

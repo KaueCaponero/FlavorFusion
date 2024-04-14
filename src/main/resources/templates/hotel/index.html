@@ -10,7 +10,33 @@
 </head>
 <body>
 
-    <h1>Hub Hotels</h1>
+    <div class="ui fixed inverted menu">
+        <div class="ui container">
+            <a href="/" class="header item">
+                Hub Hotels
+            </a>
+            <div class="right menu">
+                <div class="ui simple dropdown item">
+                    <span th:text="${user}"></span>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item" href="/profile" th:text="#{profile}"></a>
+                        <a class="item" href="/settings" th:text="#{settings}"></a>
+                        <div class="divider"></div>
+                        <a href="/logout" class="item">
+                            <i class="sign out icon"></i>
+                            <span th:text="#{logout}"></span>
+                        </a>
+                    </div>                                     
+                </div>
+                <div class="item">
+                    <img class="ui avatar image" th:src="${avatar}" alt="Avatar do Usuário">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h1 style="margin-top: 50px;">Hub Hotels</h1>
 
     <h2>Hotels</h2>
 
@@ -26,43 +52,40 @@
     <div class="ui green message" th:if="${sucessMessage != null}">
         <div class="header" th:text="${sucessMessage}"></div>
     </div>
-    
-    <!--<section class="grid">-->
-        <div class="ui stackable five cards grid">
-            <div class="ui five wide column" th:each="hotel : ${hotels}">
-                <div class="ui card">
-                    <div class="image" style="width: 100%;">
-                        <img th:src="${hotel.urlImagem}" th:alt="#{hotel.altImagem}" style="width: 100%; height: 200px;"/>
+
+    <div class="ui stackable five cards grid">
+        <div class="ui five wide column" th:each="hotel : ${hotels}">
+            <div class="ui card">
+                <div class="image" style="width: 100%;">
+                    <img th:src="${hotel.urlImagem}" th:alt="#{hotel.altImagem}" style="width: 100%; height: 200px;"/>
+                </div>
+                <div class="content">
+                    <a class="header" th:text="${hotel.nome}"></a>
+                    <div class="meta">
+                        <span class="description" th:text="${hotel.endereco}"></span></span>
                     </div>
-                    <div class="content">
-                        <a class="header" th:text="${hotel.nome}"></a>
-                        <div class="meta">
-                            <span class="description" th:text="${hotel.endereco}"></span></span>
-                        </div>
-                        </div>
-                        <div class="extra content">
-                            <div class="ui buttons">
-                                <button class="ui blue button">
-                                    <i class="eye icon"></i>
-                                </button>
-                                <div class="or" data-text="ou"></div>
-                                <button class="ui button">
-                                    <i class="edit icon"></i>
-                                </button>
-                                <div class="or" data-text="ou"></div>
-                                <form th:action="${'/hotels/' + hotel.id}" method="POST">
-                                    <input type="hidden" name="_method" value="delete"/>
-                                    <button class="ui red button">
-                                        <i class="delete icon"></i>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
+                </div>
+                <div class="extra content">
+                    <div class="ui buttons">
+                        <button class="ui blue button">
+                            <i class="eye icon"></i>
+                        </button>
+                        <div class="or" data-text="ou"></div>
+                        <button class="ui button">
+                            <i class="edit icon"></i>
+                        </button>
+                        <div class="or" data-text="ou"></div>
+                        <form th:action="${'/hotels/' + hotel.id}" method="POST">
+                            <input type="hidden" name="_method" value="delete"/>
+                            <button class="ui red button">
+                                <i class="delete icon"></i>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    <!--</section>-->
-    
+    </div>
+
 </body>
 </html>
