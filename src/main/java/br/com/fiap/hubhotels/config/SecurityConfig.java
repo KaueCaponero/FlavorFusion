@@ -11,7 +11,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
+                .authorizeHttpRequests(auth -> auth .requestMatchers("/*.css").permitAll() .anyRequest().authenticated() )
                 .oauth2Login(login -> login.loginPage("/login").defaultSuccessUrl("/hotels").permitAll())
                 .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/login"))
                 .build();
