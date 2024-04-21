@@ -1,5 +1,6 @@
 package br.com.fiap.hubhotels.hotel;
 
+import br.com.fiap.hubhotels.usuario.Usuario;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -26,4 +27,7 @@ public class Hotel {
 
     @Column(name = "IMG_HOTEL")
     private String urlImagem;
+
+    @ManyToOne
+    private Usuario usuario;
 }

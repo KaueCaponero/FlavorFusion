@@ -1,12 +1,13 @@
 package br.com.fiap.hubhotels.hotel;
 
 import br.com.fiap.hubhotels.quarto.QuartoRepository;
+import br.com.fiap.hubhotels.usuario.Usuario;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 @RequestMapping("hotels")
 public class HotelController {
@@ -33,7 +36,9 @@ public class HotelController {
     MessageSource messageSource;
 
     @GetMapping
-    public String index(Model model, @AuthenticationPrincipal OAuth2User user) {
+    public String index(Model model, @AuthenticationPrincipal DefaultOAuth2User user) {
+        Usuario myUser = (Usuario) user;
+        log.info("Usuário Carregado: " + myUser);
         model.addAttribute("hotels", repository.findAll());
         model.addAttribute("user", user.getAttribute("name"));
         model.addAttribute("avatar", user.getAttribute("avatar_url"));
