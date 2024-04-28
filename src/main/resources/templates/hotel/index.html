@@ -61,15 +61,31 @@
                 </div>
                 <div class="content">
                     <a class="header" th:text="${hotel.nome}"></a>
+                    <div th:if="${hotel.usuario}" class="item" style="display: flex; justify-content: center; margin-top: 5px; margin-bottom: 5px;">
+                        <img class="ui avatar image" th:src="${hotel.usuario.avatarUrl}" alt="Avatar do Gerente do Hotel">
+                    </div>
                     <div class="meta">
                         <span class="description" th:text="${hotel.endereco}"></span></span>
                     </div>
                 </div>
-                <div class="extra content">
-                    <div class="ui buttons">
+                <div class="extra content" style="display: flex; justify-content: center;">
+                    <div th:if="${hotel.usuario == null}" class="ui buttons">
+                        <form type="submit" th:action="${'/hotels/manage/' + hotel.id}" method="POST">
+                            <button class="ui green button">
+                                <i class="building icon"></i>
+                            </button>
+                        </form>
+                        <div class="or" data-text="ou"></div>
                         <button class="ui blue button">
                             <i class="eye icon"></i>
                         </button>
+                    </div>
+                    <div th:if="${hotel.usuario == principal}" class="ui buttons">
+                        <form type="submit" th:action="${'/hotels/drop/' + hotel.id}" method="POST">
+                            <button class="ui yellow button">
+                                <i class="user times icon"></i>
+                            </button>
+                        </form>
                         <div class="or" data-text="ou"></div>
                         <button class="ui button">
                             <i class="edit icon"></i>
@@ -78,9 +94,14 @@
                         <form th:action="${'/hotels/' + hotel.id}" method="POST">
                             <input type="hidden" name="_method" value="delete"/>
                             <button class="ui red button">
-                                <i class="delete icon"></i>
+                                <i class="trash icon"></i>
                             </button>
                         </form>
+                    </div>
+                    <div th:if="${hotel.usuario != null && hotel.usuario != principal}" class="ui buttons">
+                        <button class="ui blue button">
+                            <i class="eye icon"></i>
+                        </button>
                     </div>
                 </div>
             </div>

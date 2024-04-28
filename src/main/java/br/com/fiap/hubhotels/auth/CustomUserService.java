@@ -7,6 +7,7 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
+import br.com.fiap.hubhotels.usuario.Usuario;
 import br.com.fiap.hubhotels.usuario.UsuarioRepository;
 
 @Service
@@ -25,7 +26,7 @@ public class CustomUserService extends DefaultOAuth2UserService {
             return usuario.get();
         }
 
-        return oAuth2User;
+        return repository.save(new Usuario(oAuth2User));
     }
     
 }

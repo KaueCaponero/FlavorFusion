@@ -19,15 +19,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.validation.Valid;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Controller
 @RequestMapping("hotels")
 public class HotelController {
 
     @Autowired
     HotelRepository repository;
+
+    @Autowired
+    HotelService service;
 
     @Autowired
     QuartoRepository quartoRepository;
@@ -38,10 +39,10 @@ public class HotelController {
     @GetMapping
     public String index(Model model, @AuthenticationPrincipal DefaultOAuth2User user) {
         Usuario myUser = (Usuario) user;
-        log.info("Usuário Carregado: " + myUser);
         model.addAttribute("hotels", repository.findAll());
         model.addAttribute("user", user.getAttribute("name"));
         model.addAttribute("avatar", user.getAttribute("avatar_url"));
+        model.addAttribute("principal", myUser);
         return "hotel/index";
     }
 
@@ -72,6 +73,20 @@ public class HotelController {
 
         repository.save(hotel);
         redirect.addFlashAttribute("sucessMessage", messageSource.getMessage("hotel.created", null, LocaleContextHolder.getLocale()));
+        return "redirect:/hotels";
+    }
+
+    @PostMapping("/manage/{id}")
+    public String manage(@PathVariable Long id, @AuthenticationPrincipal DefaultOAuth2User user) {
+        Usuario myUser = (Usuario) user;
+        service.manage(id, myUser);
+        return "redirect:/hotels";
+    }
+
+    @PostMapping("/drop/{id}")
+    public String drop(@PathVariable Long id, @AuthenticationPrincipal DefaultOAuth2User user) {
+        Usuario myUser = (Usuario) user;
+        service.drop(id, myUser);
         return "redirect:/hotels";
     }
 }
