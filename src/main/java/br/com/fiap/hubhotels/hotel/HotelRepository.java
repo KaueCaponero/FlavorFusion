@@ -1,5 +1,13 @@
 package br.com.fiap.hubhotels.hotel;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
-public interface HotelRepository extends JpaRepository<Hotel, Long> { }
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+public interface HotelRepository extends JpaRepository<Hotel, Long> { 
+
+    @Query("SELECT u.usuario.id, COUNT(u) FROM Hotel u GROUP BY u.usuario.id")
+    List<Object[]> countHotelsPerUser();
+
+}

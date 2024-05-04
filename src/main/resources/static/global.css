@@ -37,3 +37,41 @@ form {
     flex-direction: column;
     gap: 1.5rem;
 }
+
+.user-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+body {
+    background-color: #f2f2f2;
+    padding-top: 60px; /* Para compensar o menu fixo */
+}
+
+.ui.main.container {
+    margin-top: 20px;
+}
+
+.ui.message {
+    margin-bottom: 20px;
+}
+
+.ui.items {
+    margin-top: 20px;
+}
+
+.user-item {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+}
+
+.user-item .header {
+    color: #333;
+}
+
+.user-item .meta {
+    color: #999;
+}

@@ -45,6 +45,11 @@
         <span th:text="#{hotel.create}" style="margin-left: 5px;"></span>
     </a>
 
+    <a href="/usuarios" class="ui yellow button" style="padding: 10px; min-width: auto; margin-bottom: 10px;">
+        <i class="trophy icon"></i>
+        <span style="margin-left: 5px;">Ranking</span>
+    </a>
+
     <div class="ui red message" th:if="${errorMessage != null}">
         <div class="header" th:text="${errorMessage}"></div>
     </div>

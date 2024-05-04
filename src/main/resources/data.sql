@@ -1,5 +1,7 @@
 -- Inserir dados na tabela de Usuario
 INSERT INTO hub_usuario (id, name, email, avatar_url) VALUES (99, 'Bruna Menegatti Vienna', 'rm96848@fiap.com.br', 'https://avatars.githubusercontent.com/u/99131108?v=4');
+INSERT INTO hub_usuario (id, name, email, avatar_url) VALUES (98, 'Joao Carlos Lima', 'pfXXXXX@fiap.com.br', 'http://github.com/joaocarloslima.png');
+
 
 -- Inserir dados nas tabelas Hotel e Quarto
 INSERT INTO hotel (nm_hotel, end_hotel, img_hotel) VALUES ('Hotel Hilton Barra', 'Av. Embaixador Abelardo Bueno, 1430 - Rio de Janeiro / RJ' ,'https://media-cdn.tripadvisor.com/media/photo-s/2a/d5/e6/e9/exterior.jpg');
